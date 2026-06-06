@@ -100,26 +100,7 @@
         }
 
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-            <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyAwSFNtDggi9Zv9wsCsgIpgJDHbhB5FM8c",
-    authDomain: "axoinlabstechnologies.firebaseapp.com",
-    databaseURL: "https://axoinlabstechnologies-default-rtdb.firebaseio.com",
-    projectId: "axoinlabstechnologies",
-    storageBucket: "axoinlabstechnologies.firebasestorage.app",
-    messagingSenderId: "3889938809",
-    appId: "1:3889938809:web:433a67868d32f6cc02afa8"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>        .card-link { text-decoration: none; color: inherit; position: relative; }
+                .card-link { text-decoration: none; color: inherit; position: relative; }
 
         .card {
             background-color: var(--card-bg); border-radius: 14px;
@@ -284,522 +265,28 @@
 
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-    }
-
-        .logo-text {
-            font-size: 13px; font-weight: 600; letter-spacing: 3px;
-            background: linear-gradient(90deg, #ffffff, var(--text-muted));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links { display: flex; list-style: none; gap: 25px; }
-
-        .nav-links li {
-            cursor: pointer; font-size: 0.8rem; color: var(--text-muted);
-            letter-spacing: 0.5px; transition: color 0.3s ease; padding: 5px 0;
-        }
-
-        .nav-links li.active-tab {
-            color: var(--text-main); border-bottom: 1px solid var(--accent-cyan);
-        }
-
-        .main-wrapper {
-            margin-top: 110px; flex-grow: 1;
-            display: flex; align-items: center; justify-content: center;
-            padding: 40px 8%;
-        }
-
-        .tab-content {
-            display: none; width: 100%; max-width: 900px;
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        .tab-content.active-content { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h2 {
-            font-size: 1.5rem; font-weight: 300; letter-spacing: 2px;
-            text-transform: uppercase; margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 0%, var(--text-muted) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-
-        .section-desc { font-size: 0.95rem; font-weight: 300; color: var(--text-muted); margin-bottom: 35px; }
-
-        .intro-container { display: flex; flex-direction: column; gap: 20px; font-size: 0.95rem; font-weight: 300; color: #d2d2d7; }
-
-        .founders { margin-top: 15px; font-size: 0.9rem; color: var(--text-muted); border-left: 1px solid var(--accent-cyan); padding-left: 15px; }
-
-        .founders strong { color: #ffffff; font-weight: 400; }
-
-        .btn-action {
-            background: transparent; color: var(--text-main);
-            padding: 12px 28px; border-radius: 25px;
-            font-size: 0.75rem; letter-spacing: 1px;
-            text-transform: uppercase; border: 1px solid rgba(0, 229, 255, 0.3);
-            cursor: pointer; transition: all 0.4s ease; display: inline-block;
-        }
-
-        .btn-action:hover {
-            border-color: #ffffff; background: #ffffff; color: #000000;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
-        }
-
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-
-        .card-link { text-decoration: none; color: inherit; position: relative; }
-
-        .card {
-            background-color: var(--card-bg); border-radius: 14px;
-            overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.01);
-            transition: all 0.4s ease; height: 100%; display: flex; flex-direction: column;
-        }
-
-        .card-img-container { width: 100%; height: 140px; background: #0b101d; overflow: hidden; position: relative; }
-
-        .card-visual { width: 100%; height: 100%; object-fit: cover; }
-
-        .card:hover { border-color: rgba(0, 229, 255, 0.2); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); }
-        <div id="travaux" class="tab-content">
-            <h2>Travaux Réalisés</h2>
-            <p class="section-desc">Les architectures applicatives et plateformes créées par ALT.</p>
-            <div class="grid-container" id="projects-list"></div>
-        </div>
-
-        <div id="partenaires" class="tab-content">
-            <h2>Partenaires ou Clients</h2>
-            <p class="section-desc">Les marques, institutions et structures abonnées aux technologies ALT.</p>
-            <div class="partners-container" id="partners-list"></div>
-        </div>
-
-    </div>
-
-    <div class="modal-overlay" id="contactModal">
-        <div class="modal-box">
-            <span class="close-modal" onclick="closeModal('contactModal')">&times;</span>
-            <h3 style="margin-bottom:15px;">Quel est votre projet ?</h3>
-            <select id="projectType" class="form-select">
-                <option value="un Site Web moderne">Site Web Moderne</option>
-                <option value="une Application Mobile">Application Mobile</option>
-                <option value="une Solution sur mesure / un Logiciel">Solution sur mesure / Logiciel</option>
-            </select>
-            <button class="btn-submit-form" onclick="generateAndSend()">Continuer sur Instagram</button>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="adminModal">
-        <div class="modal-box" style="max-width:550px;">
-            <span class="close-modal" onclick="closeModal('adminModal')">&times;</span>
-            <h3 style="margin-bottom:5px;">Panneau d'administration ALT</h3>
-            <p class="section-desc" style="margin-bottom:20px;">Ajoutez du contenu. Les images seront converties automatiquement.</p>
-            
-            <select id="adminActionType" class="form-select" onchange="toggleAdminFields()">
-                <option value="projet">Ajouter un Projet</option>
-                <option value="partenaire">Ajouter un Partenaire</option>
-            </select>
-
-            <div id="form-projet-block" class="admin-flex">
-                <input type="text" id="p-titre" class="form-input" placeholder="Titre du projet">
-                <input type="text" id="p-desc" class="form-input" placeholder="Description concise">
-                <input type="file" id="p-img-file" class="form-input-file" accept="image/*">
-                <input type="text" id="p-lien" class="form-input" placeholder="Lien final (https://...)">
-            </div>
-
-            <div id="form-partenaire-block" class="admin-flex" style="display:none;">
-                <input type="text" id="part-nom" class="form-input" placeholder="Nom de la structure">
-                <input type="file" id="part-logo-file" class="form-input-file" accept="image/*">
-                <input type="text" id="part-lien" class="form-input" placeholder="Lien du site partenaire (ou #)">
-            </div>
-
-            <button class="btn-submit-form" style="margin-top:20px; background:#00e5ff; color:black;" onclick="submitAdminData()">Publier</button>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-logo-box" ondblclick="checkAdminAccess()" title="Accès Administrateurs">
-            <canvas id="footer-logo-canvas" width="50" height="50" class="footer-logo-img"></canvas>
-        </div>
-        <div style="margin-top:10px;">
-            <button class="btn-action" style="font-size:0.7rem; padding:8px 15px;" onclick="exportLogoToGallery()">Exporter le Logo ALT</button>
-        </div>
-        <p style="margin-top:20px;">&copy; 2026 AXION LABS Technologies (ALT). All rights reserved.</p>
-    </footer>
-
-    <script>
-        // --- CONFIGURATION DE SÉCURITÉ ---
-        // Votre code de sécurité secret global
+        <script>
+        // --- CONFIGURATION DE SÉCURITÉ ET LOGO ---
         const SECRET_ADMIN_CODE = "BZD-PLN2026";
         
-        // Collez le texte base64 de votre logo entre les guillemets (Optionnel)
-        const ALT_LOGO_BASE64 = "data:image/png;base64,TU_REMPLACES_CE_TEXTE_PAR_TON_CODE_BASE64_DU_LOGO";
+        // Colle tout le long texte Base64 de ton image de planète entre les guillemets ""
+        const ALT_LOGO_BASE64 = "";
 
-        // Mémoire locale (localStorage)
-        let mesProjets = JSON.parse(localStorage.getItem('alt_projets')) || [];
-        let mesPartenaires = JSON.parse(localStorage.getItem('alt_partenaires')) || [];
-
-        // Gestion des Onglets
-        function switchTab(event, tabId) {
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active-content'));
-            document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active-tab'));
-            document.getElementById(tabId).classList.add('active-content');
-            event.currentTarget.classList.add('active-tab');
-        }
-
-        // Modals
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-
-        // --- SÉCURITÉ D'ACCÈS PAR MOT DE PASSE ---
-        function checkAdminAccess() {
-            const codeInput = prompt("Entrez le code de sécurité secret d'AXION LABS :");
-            if(codeInput === SECRET_ADMIN_CODE) {
-                openModal('adminModal');
-            } else {
-                alert("Code d'accès incorrect. Opération annulée.");
-            }
-        }
-
-        // --- EXPORTATION DU LOGO VERS LES TÉLÉCHARGEMENTS ---
-        function exportLogoToGallery() {
-            if(ALT_LOGO_BASE64.includes("TU_REMPLACES")) {
-                return alert("Le code base64 du logo n'a pas encore été renseigné dans la variable ALT_LOGO_BASE64.");
-            }
-            const downloadLink = document.createElement("a");
-            downloadLink.href = ALT_LOGO_BASE64;
-            downloadLink.download = "ALT_Logo_Official.png";
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-            alert("Téléchargement du logo initié avec succès.");
-        }
-
-        function toggleAdminFields() {
-            const type = document.getElementById('adminActionType').value;
-            document.getElementById('form-projet-block').style.display = type === 'projet' ? 'flex' : 'none';
-            document.getElementById('form-partenaire-block').style.display = type === 'partenaire' ? 'flex' : 'none';
-        }
-
-        // Instagram Redirection
-        function generateAndSend() {
-            closeModal('contactModal');
-            window.open(`https://www.instagram.com/axoinlabstechnologies5?igsh=MWpjeHk2NGcwanVjOQ==`, '_blank');
-        }
-
-        // Traitement dynamique et conversion des médias importés en Base64
-        async function submitAdminData() {
-            const type = document.getElementById('adminActionType').value;
-            const toBase64 = file => new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = error => reject(error);
-            });
-
-            if (type === 'projet') {
-                const titre = document.getElementById('p-titre').value;
-                const desc = document.getElementById('p-desc').value;
-                const lien = document.getElementById('p-lien').value || '#';
-                const fileInput = document.getElementById('p-img-file');
-
-                if(!titre || !desc || !fileInput.files[0]) return alert("Veuillez renseigner le titre, la description et charger une image.");
-                
-                const imgBase64 = await toBase64(fileInput.files[0]);
-                mesProjets.push({ titre, description: desc, image: imgBase64, lien });
-                localStorage.setItem('alt_projets', JSON.stringify(mesProjets));
-            } else {
-                const nom = document.getElementById('part-nom').value;
-                const lien = document.getElementById('part-lien').value || '#';
-                const fileInput = document.getElementById('part-logo-file');
-
-                if(!nom || !fileInput.files[0]) return alert("Le nom et le logo du partenaire sont obligatoires.");
-
-                const logoBase64 = await toBase64(fileInput.files[0]);
-                mesPartenaires.push({ nom, logo: logoBase64, lien });
-                localStorage.setItem('alt_partenaires', JSON.stringify(mesPartenaires));
-            }
-
-            document.querySelectorAll('.form-input, .form-input-file').forEach(input => input.value = '');
-            closeModal('adminModal');
-            renderData();
-        }
-
-        // Affichage dynamique du contenu stocké
-        function renderData() {
-            const pConteneur = document.getElementById('projects-list');
-            if(mesProjets.length === 0) {
-                pConteneur.innerHTML = '<p class="empty-text">Aucune réalisation répertoriée pour le moment.</p>';
-            } else {
-                pConteneur.innerHTML = '';
-                mesProjets.forEach((p, idx) => {
-                    pConteneur.innerHTML += `
-                        <div class="card-link">
-                            <button class="btn-delete" onclick="deleteProjet(${idx}, event)">Supprimer</button>
-                            <a href="${p.lien}" target="_blank" style="text-decoration:none; color:inherit;">
-                                <div class="card">
-                                    <div class="card-img-container">
-                                        <img src="${p.image}" alt="${p.titre}" class="card-visual">
-                                    </div>
-                                    <div class="card-info">
-                                        <h3>${p.titre}</h3>
-                                        <p>${p.description}</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>`;
-                });
-            }
-
-            const partConteneur = document.getElementById('partners-list');
-            if(mesPartenaires.length === 0) {
-                partConteneur.innerHTML = '<p class="empty-text">Aucun partenaire enregistré.</p>';
-            } else {
-                partConteneur.innerHTML = '';
-                mesPartenaires.forEach((part, idx) => {
-                    partConteneur.innerHTML += `
-                        <div class="partner-item-wrapper">
-                            <button class="btn-delete" style="top:-15px; right:-5px;" onclick="deletePartenaire(${idx}, event)">×</button>
-                            <a href="${part.lien}" target="_blank" class="partner-link" title="${part.nom}">
-                                <img src="${part.logo}" alt="${part.nom}" class="partner-logo">
-                            </a>
-                        </div>`;
-                });
-            }
-        }
-
-        // Rendu graphique du logo sur le canvas
-        function drawFooterLogo() {
-            const canvas = document.getElementById('footer-logo-canvas');
-            const ctx = canvas.getContext('2d');
-            if(ALT_LOGO_BASE64.includes("TU_REMPLACES")) {
-                // Rendu par défaut si le base64 n'est pas encore présent
-                ctx.fillStyle = "#00e5ff";
-                ctx.font = "bold 14px sans-serif";
-                ctx.fillText("ALT", 12, 30);
-                return;
-            }
-            const img = new Image();
-            img.src = ALT_LOGO_BASE64;
-            img.onload = () => { ctx.drawImage(img, 0, 0, 50, 50); };
-        }
-
-        // Suppression d'éléments de la base locale
-        function deleteProjet(index, e) {
-            e.preventDefault(); e.stopPropagation();
-            if(confirm("Supprimer cette réalisation définitivement ?")) {
-                mesProjets.splice(index, 1);
-                localStorage.setItem('alt_projets', JSON.stringify(mesProjets));
-                renderData();
-            }
-        }
-        function deletePartenaire(index, e) {
-            e.preventDefault(); e.stopPropagation();
-            if(confirm("Supprimer ce partenaire ?")) {
-                mesPartenaires.splice(index, 1);
-                localStorage.setItem('alt_partenaires', JSON.stringify(mesPartenaires));
-                renderData();
-            }
-        }
-
-        // Lancement au chargement du DOM
-        window.onload = () => {
-            renderData();
-            drawFooterLogo();
+        // --- TOI & MOI : CONFIGURATION DE TA BASE DE DONNÉES FIREBASE ---
+        // Remplace simplement les valeurs ci-dessous par celles fournies sur ta console Firebase
+        const firebaseConfig = {
+            apiKey: "TON_API_KEY_ICI",
+            authDomain: "TON_AUTH_DOMAIN_ICI",
+            databaseURL: "TON_DATABASE_URL_ICI",
+            projectId: "TON_PROJECT_ID_ICI",
+            storageBucket: "TON_STORAGE_BUCKET_ICI",
+            messagingSenderId: "TON_SENDER_ID_ICI",
+            appId: "TON_APP_ID_ICI"
         };
-    </script>
-</body>
-</html>
-        .card-info { padding: 20px; flex-grow: 1; }
-        .card h3 { font-size: 1.05rem; font-weight: 400; margin-bottom: 8px; }
-        .card p { color: var(--text-muted); font-size: 0.8rem; font-weight: 300; }
 
-        /* BOUTON SUPPRIMER (UNIQUEMENT POUR L'ADMIN) */
-        .btn-delete {
-            position: absolute; top: 10px; right: 10px;
-            background: rgba(255, 59, 48, 0.9); color: white;
-            border: none; padding: 5px 10px; border-radius: 5px;
-            font-size: 0.7rem; cursor: pointer; z-index: 10;
-        }
-
-        .partners-container { display: flex; flex-wrap: wrap; gap: 15px; align-items: center; }
-
-        .partner-item-wrapper { position: relative; }
-
-        .partner-link {
-            background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.02);
-            border-radius: 10px; padding: 12px 22px;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s ease; color: var(--text-muted); text-decoration: none;
-            font-size: 0.85rem;
-        }
-
-        .partner-logo { max-height: 35px; max-width: 110px; object-fit: contain; filter: grayscale(1) brightness(0.8); }
-
-        .partner-link:hover .partner-logo { filter: grayscale(0) brightness(1); color: white;}
-
-        .empty-text { color: #2c2c2e; font-style: italic; font-size: 0.85rem; }
-
-        /* MODALS CYBER-FUTURISTES */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(2, 4, 8, 0.9); backdrop-filter: blur(10px);
-            z-index: 2000; display: none; align-items: center; justify-content: center;
-            padding: 20px;
-        }
-
-        .modal-box {
-            background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px; padding: 30px;
-            width: 100%; max-width: 480px; position: relative;
-            box-shadow: 0 0 40px rgba(0, 229, 255, 0.1);
-        }
-
-        .close-modal {
-            position: absolute; top: 20px; right: 20px;
-            color: var(--text-muted); cursor: pointer; font-size: 1.2rem;
-        }
-
-        .form-select, .form-input {
-            width: 100%; padding: 12px;
-            background: var(--bg-color); border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white; border-radius: 8px; margin-bottom: 15px;
-            font-size: 0.9rem; outline: none;
-        }
-
-        .form-input-file {
-            width: 100%; padding: 10px;
-            background: rgba(255,255,255,0.02); color: white;
-            border-radius: 8px; margin-bottom: 15px; font-size: 0.8rem;
-        }
-
-        .btn-submit-form {
-            width: 100%; padding: 12px;
-            background: white; color: black;
-            border: none; border-radius: 8px;
-            font-weight: 500; font-size: 0.85rem;
-            cursor: pointer; text-transform: uppercase;
-        }
-
-        .admin-flex { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
-
-        /* PIED DE PAGE */
-        footer {
-            text-align: center; padding: 40px 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.02); margin-top: auto;
-        }
-
-        .footer-logo-box { margin-bottom: 15px; display: inline-block; cursor: pointer; }
-
-        .footer-logo-img {
-            border-radius: 10px; opacity: 0.3;
-            filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.2));
-        }
-
-        footer p { color: #2c2c2e; font-size: 0.75rem; }
-
-        @media (max-width: 768px) { nav { padding: 15px 5%; } .nav-links { gap: 15px; } .main-wrapper { padding: 20px 5%; margin-top: 90px; } }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <div class="logo-text">AXION LABS TECHNOLOGIES</div>
-        <ul class="nav-links">
-            <li class="tab-link active-tab" onclick="switchTab(event, 'presentation')">Présentation</li>
-            <li class="tab-link" onclick="switchTab(event, 'travaux')">Travaux</li>
-            <li class="tab-link" onclick="switchTab(event, 'partenaires')">Partenaires ou Clients</li>
-        </ul>
-    </nav>
-
-    <div class="main-wrapper">
-
-        <div id="presentation" class="tab-content active-content">
-            <h2>Présentation</h2>
-            <p class="section-desc">L'ADN, la mission et la vision globale de notre ingénierie.</p>
-            <div class="intro-container">
-                <p><strong>AXION LABS Technologies (ALT)</strong> est une startup technologique spécialisée dans la création de solutions numériques innovantes conçues pour répondre aux besoins réels de notre société. Nous développons des logiciels, des plateformes et des outils digitaux capables d’aider les entreprises, les écoles et les particuliers à résoudre leurs défis de manière simple, moderne et efficace.</p>
-                <p>Notre mission est de rendre la technologie plus utile, accessible et impactante à travers des solutions concretes adaptées aux réalités actuelles. Chez AXION LABS Technologies, nous croyons que les meilleures innovations sont celles qui apportent des solutions pratiques aux problèmes du quotidien.</p>
-                <p>Startup fondée par <strong>Advice Basinsa</strong> et <strong>Henock Aduma</strong>.</p>
-            </div>
-            <div class="cta-container">
-                <button class="btn-action" onclick="openModal('contactModal')">Nous contacter</button>
-            </div>
-        </div>
-        <div id="travaux" class="tab-content">
-            <h2>Travaux Réalisés</h2>
-            <p class="section-desc">Les architectures applicatives et plateformes créées par ALT.</p>
-            <div class="grid-container" id="projects-list"></div>
-        </div>
-
-        <div id="partenaires" class="tab-content">
-            <h2>Partenaires ou Clients</h2>
-            <p class="section-desc">Les marques, institutions et structures abonnées aux technologies ALT.</p>
-            <div class="partners-container" id="partners-list"></div>
-        </div>
-
-    </div>
-
-    <div class="modal-overlay" id="contactModal">
-        <div class="modal-box">
-            <span class="close-modal" onclick="closeModal('contactModal')">&times;</span>
-            <h3 style="margin-bottom:15px;">Quel est votre projet ?</h3>
-            <select id="projectType" class="form-select">
-                <option value="un Site Web moderne">Site Web Moderne</option>
-                <option value="une Application Mobile">Application Mobile</option>
-                <option value="une Solution sur mesure / un Logiciel">Solution sur mesure / Logiciel</option>
-            </select>
-            <button class="btn-submit-form" onclick="generateAndSend()">Continuer sur Instagram</button>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="adminModal">
-        <div class="modal-box" style="max-width:550px;">
-            <span class="close-modal" onclick="closeModal('adminModal')">&times;</span>
-            <h3 style="margin-bottom:5px;">Panneau d'administration ALT</h3>
-            <p class="section-desc" style="margin-bottom:20px;">Ajoutez du contenu. Les images seront converties automatiquement.</p>
-            
-            <select id="adminActionType" class="form-select" onchange="toggleAdminFields()">
-                <option value="projet">Ajouter un Projet</option>
-                <option value="partenaire">Ajouter un Partenaire</option>
-            </select>
-
-            <div id="form-projet-block" class="admin-flex">
-                <input type="text" id="p-titre" class="form-input" placeholder="Titre du projet">
-                <input type="text" id="p-desc" class="form-input" placeholder="Description concise">
-                <input type="file" id="p-img-file" class="form-input-file" accept="image/*">
-                <input type="text" id="p-lien" class="form-input" placeholder="Lien final (https://...)">
-            </div>
-
-            <div id="form-partenaire-block" class="admin-flex" style="display:none;">
-                <input type="text" id="part-nom" class="form-input" placeholder="Nom de la structure">
-                <input type="file" id="part-logo-file" class="form-input-file" accept="image/*">
-                <input type="text" id="part-lien" class="form-input" placeholder="Lien du site partenaire (ou #)">
-            </div>
-
-            <button class="btn-submit-form" style="margin-top:20px; background:#00e5ff; color:black;" onclick="submitAdminData()">Publier</button>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-logo-box" ondblclick="checkAdminAccess()" title="Accès Administrateurs">
-            <img id="footer-logo-dynamic" src="" alt="AXION LABS LOGO" class="footer-logo-img" style="max-width: 65px; opacity: 0.85; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">
-        </div>
-        <p style="margin-top:15px;">&copy; 2026 AXION LABS Technologies (ALT). All rights reserved.</p>
-    </footer>
-
-    <script>
-        // --- CONFIGURATION DE SÉCURITÉ ET MOT DE PASSE SECRET ---
-        const SECRET_ADMIN_CODE = "BZD-PLN2026";
-        
-        // REVIENS ICI : Copie et colle TOUT le long texte Base64 de ton image de planète entre les guillemets ""
-        const ALT_LOGO_BASE64 = "data:image/png;base64,TU_REMPLACES_CE_TEXTE_PAR_LE_BASE64_DE_LA_PLANETE";
-
-        // Mémoire locale (localStorage)
-        let mesProjets = JSON.parse(localStorage.getItem('alt_projets')) || [];
-        let mesPartenaires = JSON.parse(localStorage.getItem('alt_partenaires')) || [];
+        // Initialisation de Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
 
         // Gestion des Onglets
         function switchTab(event, tabId) {
@@ -813,14 +300,11 @@
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        // --- SÉCURITÉ D'ACCÈS PAR MOT DE PASSE ---
+        // Sécurité
         function checkAdminAccess() {
             const codeInput = prompt("Entrez le code de sécurité secret d'AXION LABS :");
-            if(codeInput === SECRET_ADMIN_CODE) {
-                openModal('adminModal');
-            } else {
-                alert("Code d'accès incorrect. Opération annulée.");
-            }
+            if(codeInput === SECRET_ADMIN_CODE) { openModal('adminModal'); } 
+            else { alert("Code d'accès incorrect. Opération annulée."); }
         }
 
         function toggleAdminFields() {
@@ -829,20 +313,17 @@
             document.getElementById('form-partenaire-block').style.display = type === 'partenaire' ? 'flex' : 'none';
         }
 
-        // Instagram Redirection
         function generateAndSend() {
             closeModal('contactModal');
             window.open(`https://www.instagram.com/axoinlabstechnologies5?igsh=MWpjeHk2NGcwanVjOQ==`, '_blank');
         }
 
-        // Traitement dynamique et conversion des médias importés en Base64
+        // Traitement et publication directe sur Firebase (Cloud)
         async function submitAdminData() {
             const type = document.getElementById('adminActionType').value;
             const toBase64 = file => new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = error => reject(error);
+                const reader = new FileReader(); reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result); reader.onerror = error => reject(error);
             });
 
             if (type === 'projet') {
@@ -851,103 +332,105 @@
                 const lien = document.getElementById('p-lien').value || '#';
                 const fileInput = document.getElementById('p-img-file');
 
-                if(!titre || !desc || !fileInput.files[0]) return alert("Veuillez renseigner le titre, la description et charger une image.");
+                if(!titre || !desc || !fileInput.files[0]) return alert("Veuillez renseigner les champs obligatoires.");
                 
                 const imgBase64 = await toBase64(fileInput.files[0]);
-                mesProjets.push({ titre, description: desc, image: imgBase64, lien });
-                localStorage.setItem('alt_projets', JSON.stringify(mesProjets));
+                
+                // Envoi cloud Firebase
+                database.ref('projets').push({ titre, description: desc, image: imgBase64, lien, adminCode: SECRET_ADMIN_CODE }, () => {
+                    alert("Projet publié avec succès sur Firebase !");
+                    closeModal('adminModal');
+                });
             } else {
                 const nom = document.getElementById('part-nom').value;
                 const lien = document.getElementById('part-lien').value || '#';
                 const fileInput = document.getElementById('part-logo-file');
 
-                if(!nom || !fileInput.files[0]) return alert("Le nom et le logo du partenaire sont obligatoires.");
+                if(!nom || !fileInput.files[0]) return alert("Veuillez charger le logo du partenaire.");
 
                 const logoBase64 = await toBase64(fileInput.files[0]);
-                mesPartenaires.push({ nom, logo: logoBase64, lien });
-                localStorage.setItem('alt_partenaires', JSON.stringify(mesPartenaires));
+                
+                // Envoi cloud Firebase
+                database.ref('partenaires').push({ nom, logo: logoBase64, lien, adminCode: SECRET_ADMIN_CODE }, () => {
+                    alert("Partenaire ajouté avec succès sur Firebase !");
+                    closeModal('adminModal');
+                });
             }
 
             document.querySelectorAll('.form-input, .form-input-file').forEach(input => input.value = '');
-            closeModal('adminModal');
-            renderData();
         }
 
-        // Affichage dynamique du contenu stocké
-        function renderData() {
-            const pConteneur = document.getElementById('projects-list');
-            if(mesProjets.length === 0) {
-                pConteneur.innerHTML = '<p class="empty-text">Aucune réalisation répertoriée pour le moment.</p>';
-            } else {
+        // ÉCOUTE ET RECHARGEMENT EN TEMPS RÉEL DEPUIS FIREBASE
+        function listenFirebaseData() {
+            // Lecture des projets
+            database.ref('projets').on('value', (snapshot) => {
+                const pConteneur = document.getElementById('projects-list');
                 pConteneur.innerHTML = '';
-                mesProjets.forEach((p, idx) => {
+                const data = snapshot.val();
+                if(!data) {
+                    pConteneur.innerHTML = '<p class="empty-text">Aucune réalisation répertoriée pour le moment.</p>';
+                    return;
+                }
+                Object.keys(data).forEach((key) => {
+                    const p = data[key];
                     pConteneur.innerHTML += `
                         <div class="card-link">
-                            <button class="btn-delete" onclick="deleteProjet(${idx}, event)">Supprimer</button>
+                            <button class="btn-delete" onclick="deleteProjet('${key}', event)">Supprimer</button>
                             <a href="${p.lien}" target="_blank" style="text-decoration:none; color:inherit;">
                                 <div class="card">
-                                    <div class="card-img-container">
-                                        <img src="${p.image}" alt="${p.titre}" class="card-visual">
-                                    </div>
-                                    <div class="card-info">
-                                        <h3>${p.titre}</h3>
-                                        <p>${p.description}</p>
-                                    </div>
+                                    <div class="card-img-container"><img src="${p.image}" alt="${p.titre}" class="card-visual"></div>
+                                    <div class="card-info"><h3>${p.titre}</h3><p>${p.description}</p></div>
                                 </div>
                             </a>
                         </div>`;
                 });
-            }
+            });
 
-            const partConteneur = document.getElementById('partners-list');
-            if(mesPartenaires.length === 0) {
-                partConteneur.innerHTML = '<p class="empty-text">Aucun partenaire enregistré.</p>';
-            } else {
+            // Lecture des partenaires
+            database.ref('partenaires').on('value', (snapshot) => {
+                const partConteneur = document.getElementById('partners-list');
                 partConteneur.innerHTML = '';
-                mesPartenaires.forEach((part, idx) => {
+                const data = snapshot.val();
+                if(!data) {
+                    partConteneur.innerHTML = '<p class="empty-text">Aucun partenaire enregistré.</p>';
+                    return;
+                }
+                Object.keys(data).forEach((key) => {
+                    const part = data[key];
                     partConteneur.innerHTML += `
                         <div class="partner-item-wrapper">
-                            <button class="btn-delete" style="top:-15px; right:-5px;" onclick="deletePartenaire(${idx}, event)">×</button>
+                            <button class="btn-delete" style="top:-15px; right:-5px;" onclick="deletePartenaire('${key}', event)">×</button>
                             <a href="${part.lien}" target="_blank" class="partner-link" title="${part.nom}">
                                 <img src="${part.logo}" alt="${part.nom}" class="partner-logo">
                             </a>
                         </div>`;
                 });
-            }
+            });
         }
 
-        // Injection du logo premium dans le footer
+        // Suppression Cloud Firebase
+        function deleteProjet(key, e) {
+            e.preventDefault(); e.stopPropagation();
+            if(confirm("Supprimer cette réalisation définitivement du cloud ?")) { database.ref('projets/' + key).remove(); }
+        }
+        function deletePartenaire(key, e) {
+            e.preventDefault(); e.stopPropagation();
+            if(confirm("Supprimer ce partenaire du cloud ?")) { database.ref('partenaires/' + key).remove(); }
+        }
+
+        // Rendu du logo Planète
         function setupFooterLogo() {
             const logoImgElement = document.getElementById('footer-logo-dynamic');
-            if(ALT_LOGO_BASE64.includes("TU_REMPLACES")) {
-                // Rendu par défaut si le base64 n'est pas inséré
+            if(!ALT_LOGO_BASE64) {
                 logoImgElement.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><circle cx='30' cy='30' r='25' fill='none' stroke='%2300e5ff' stroke-width='2'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-size='12' font-weight='bold'>ALT</text></svg>";
                 return;
             }
             logoImgElement.src = ALT_LOGO_BASE64;
         }
 
-        // Suppression d'éléments
-        function deleteProjet(index, e) {
-            e.preventDefault(); e.stopPropagation();
-            if(confirm("Supprimer cette réalisation définitivement ?")) {
-                mesProjets.splice(index, 1);
-                localStorage.setItem('alt_projets', JSON.stringify(mesProjets));
-                renderData();
-            }
-        }
-        function deletePartenaire(index, e) {
-            e.preventDefault(); e.stopPropagation();
-            if(confirm("Supprimer ce partenaire ?")) {
-                mesPartenaires.splice(index, 1);
-                localStorage.setItem('alt_partenaires', JSON.stringify(mesPartenaires));
-                renderData();
-            }
-        }
-
         window.onload = () => {
-            renderData();
             setupFooterLogo();
+            listenFirebaseData();
         };
     </script>
 </body>
