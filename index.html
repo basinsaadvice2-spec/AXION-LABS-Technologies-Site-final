@@ -100,7 +100,7 @@
         }
 
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-                .card-link { text-decoration: none; color: inherit; position: relative; }
+        .card-link { text-decoration: none; color: inherit; position: relative; }
 
         .card {
             background-color: var(--card-bg); border-radius: 14px;
@@ -202,7 +202,7 @@
                 <button class="btn-action" onclick="openModal('contactModal')">Nous contacter</button>
             </div>
         </div>
-                <div id="travaux" class="tab-content">
+        <div id="travaux" class="tab-content">
             <h2>Travaux Réalisés</h2>
             <p class="section-desc">Les architectures applicatives et plateformes créées par ALT.</p>
             <div class="grid-container" id="projects-list"></div>
@@ -265,23 +265,22 @@
 
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-        <script>
+    <script>
         // --- CONFIGURATION DE SÉCURITÉ ET LOGO ---
         const SECRET_ADMIN_CODE = "BZD-PLN2026";
         
-        // Colle tout le long texte Base64 de ton image de planète entre les guillemets ""
+        // Colle le long texte Base64 de ton image de planète entre les guillemets "" si tu l'as
         const ALT_LOGO_BASE64 = "";
 
-        // --- TOI & MOI : CONFIGURATION DE TA BASE DE DONNÉES FIREBASE ---
-        // Remplace simplement les valeurs ci-dessous par celles fournies sur ta console Firebase
+        // --- TES CLÉS CLOUD AXION LABS TECHNOLOGIES ---
         const firebaseConfig = {
-            apiKey: "TON_API_KEY_ICI",
-            authDomain: "TON_AUTH_DOMAIN_ICI",
-            databaseURL: "TON_DATABASE_URL_ICI",
-            projectId: "TON_PROJECT_ID_ICI",
-            storageBucket: "TON_STORAGE_BUCKET_ICI",
-            messagingSenderId: "TON_SENDER_ID_ICI",
-            appId: "TON_APP_ID_ICI"
+            apiKey: "AIzaSyAwSFNtDggi9Zv9wsCsgIpgJDHbhB5FM8c",
+            authDomain: "axoinlabstechnologies.firebaseapp.com",
+            databaseURL: "https://axoinlabstechnologies-default-rtdb.firebaseio.com",
+            projectId: "axoinlabstechnologies",
+            storageBucket: "axoinlabstechnologies.firebasestorage.app",
+            messagingSenderId: "3889938809",
+            appId: "1:3889938809:web:433a67868d32f6cc02afa8"
         };
 
         // Initialisation de Firebase
