@@ -118,7 +118,9 @@
         .card h3 { font-size: 1.05rem; font-weight: 400; margin-bottom: 8px; }
         .card p { color: var(--text-muted); font-size: 0.8rem; font-weight: 300; }
 
+        /* Boutons de suppression masqués par défaut, visibles uniquement via double-clic admin */
         .btn-delete {
+            display: none;
             position: absolute; top: 10px; right: 10px;
             background: rgba(255, 59, 48, 0.9); color: white;
             border: none; padding: 5px 10px; border-radius: 5px;
@@ -268,8 +270,8 @@
     <script>
         // --- CONFIGURATION DE SÉCURITÉ ET LOGO ---
         const SECRET_ADMIN_CODE = "BZD-PLN2026";
+        let isAdminAuthenticated = false; // Permet de suivre si les boutons de suppression doivent s'afficher
         
-        // Colle le long texte Base64 de ton image de planète entre les guillemets "" si tu l'as
         const ALT_LOGO_BASE64 = "";
 
         // --- TES CLÉS CLOUD AXION LABS TECHNOLOGIES ---
@@ -299,11 +301,23 @@
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        // Sécurité
+        // Sécurité & Mode Édition
         function checkAdminAccess() {
             const codeInput = prompt("Entrez le code de sécurité secret d'AXION LABS :");
-            if(codeInput === SECRET_ADMIN_CODE) { openModal('adminModal'); } 
+            if(codeInput === SECRET_ADMIN_CODE) { 
+                isAdminAuthenticated = true;
+                alert("Accès accordé. Les boutons de suppression sont désormais visibles à côté de vos éléments.");
+                refreshDeleteButtons();
+                openModal('adminModal'); 
+            } 
             else { alert("Code d'accès incorrect. Opération annulée."); }
+        }
+
+        function refreshDeleteButtons() {
+            const displayStyle = isAdminAuthenticated ? 'block' : 'none';
+            document.querySelectorAll('.btn-delete').forEach(btn => {
+                btn.style.display = displayStyle;
+            });
         }
 
         function toggleAdminFields() {
@@ -312,11 +326,10 @@
             document.getElementById('form-partenaire-block').style.display = type === 'partenaire' ? 'flex' : 'none';
         }
 
+        // OUVERTURE SUR TON NOUVEAU LIEN INSTAGRAM
         function generateAndSend() {
-    closeModal('contactModal');
-    window.open(`https://www.instagram.com/axion_labs_technologies?igsh=MWpjeHk2NGcwanVjOQ==`, '_blank');
-}
-
+            closeModal('contactModal');
+            window.open(`https://www.instagram.com/axion_labs_technologies?igsh=MWpjeHk2NGcwanVjOQ==`, '_blank');
         }
 
         // Traitement et publication directe sur Firebase (Cloud)
@@ -337,7 +350,6 @@
                 
                 const imgBase64 = await toBase64(fileInput.files[0]);
                 
-                // Envoi cloud Firebase
                 database.ref('projets').push({ titre, description: desc, image: imgBase64, lien, adminCode: SECRET_ADMIN_CODE }, () => {
                     alert("Projet publié avec succès sur Firebase !");
                     closeModal('adminModal');
@@ -351,7 +363,6 @@
 
                 const logoBase64 = await toBase64(fileInput.files[0]);
                 
-                // Envoi cloud Firebase
                 database.ref('partenaires').push({ nom, logo: logoBase64, lien, adminCode: SECRET_ADMIN_CODE }, () => {
                     alert("Partenaire ajouté avec succès sur Firebase !");
                     closeModal('adminModal');
@@ -363,7 +374,6 @@
 
         // ÉCOUTE ET RECHARGEMENT EN TEMPS RÉEL DEPUIS FIREBASE
         function listenFirebaseData() {
-            // Lecture des projets
             database.ref('projets').on('value', (snapshot) => {
                 const pConteneur = document.getElementById('projects-list');
                 pConteneur.innerHTML = '';
@@ -385,9 +395,9 @@
                             </a>
                         </div>`;
                 });
+                refreshDeleteButtons();
             });
 
-            // Lecture des partenaires
             database.ref('partenaires').on('value', (snapshot) => {
                 const partConteneur = document.getElementById('partners-list');
                 partConteneur.innerHTML = '';
@@ -406,6 +416,7 @@
                             </a>
                         </div>`;
                 });
+                refreshDeleteButtons();
             });
         }
 
@@ -419,7 +430,7 @@
             if(confirm("Supprimer ce partenaire du cloud ?")) { database.ref('partenaires/' + key).remove(); }
         }
 
-        // Rendu du logo Planète
+        // Rendu du logo ALT restauré
         function setupFooterLogo() {
             const logoImgElement = document.getElementById('footer-logo-dynamic');
             if(!ALT_LOGO_BASE64) {
