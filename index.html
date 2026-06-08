@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>AXION LABS Technologies | ALT</title>
     <style>
-        /* RETOUR AU DESIGN SYSTEM PREMIUM ALT D'ORIGINE - COULEURS VIVES ET HAUT CONTRASTE */
+        /* DESIGN SYSTEM ALT – INSPIRATION PREMIUM APPLE */
         :root {
             --bg-pure: #ffffff;
             --bg-overlay: rgba(255, 255, 255, 0.4);
             --text-main: #000000;
             --text-muted: #1c1c1e;
-            --nav-bg: #ffffff;
-            --border-color: #000000;
+            --nav-bg: rgba(255, 255, 255, 0.8);
+            --border-color: rgba(0, 0, 0, 0.1);
             
             /* Énergie ALT d'origine */
             --accent-blue: #0044ff;
             --accent-cyan: #00d2ff;
             --gradient-premium: linear-gradient(135deg, #0055ff 0%, #00d2ff 100%);
-            --glow-shadow: 0 12px 35px rgba(0, 68, 255, 0.3);
+            --glow-shadow: 0 8px 30px rgba(0, 68, 255, 0.15);
         }
 
         * {
             margin: 0; padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -81,33 +81,34 @@
             padding: 15px 5%; background: var(--nav-bg);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             position: fixed; width: 100%; top: 0; z-index: 1000;
-            border-bottom: 2px solid var(--text-main);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .logo-nav-container { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 
         .logo-text {
-            font-size: 13px; font-weight: 900; letter-spacing: 1.5px;
+            font-size: 13px; font-weight: 700; letter-spacing: 1.2px;
             background: linear-gradient(90deg, #000000, var(--accent-blue));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             white-space: nowrap;
         }
 
         .nav-right-zone { display: flex; align-items: center; gap: 20px; }
-        .nav-links { display: flex; list-style: none; gap: 20px; align-items: center; }
+        .nav-links { display: flex; list-style: none; gap: 24px; align-items: center; }
 
         .nav-links li {
-            cursor: pointer; font-size: 0.85rem; color: var(--text-main);
-            letter-spacing: 0.5px; transition: color 0.2s ease; padding: 5px 0;
-            font-weight: 800; white-space: nowrap; position: relative;
+            cursor: pointer; font-size: 0.88rem; color: #1d1d1f;
+            letter-spacing: 0px; transition: color 0.25s cubic-bezier(0.25, 0.1, 0.25, 1); padding: 5px 0;
+            font-weight: 500; white-space: nowrap; position: relative;
         }
 
         .nav-links li:hover { color: var(--accent-blue); }
         .nav-links li::after {
-            content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 3px;
-            background: var(--text-main); transition: width 0.25s ease;
+            content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
+            background: var(--accent-blue); transition: width 0.25s ease;
         }
-        .nav-links li.active-tab::after { width: 100%; background: var(--accent-blue); }
+        .nav-links li.active-tab { color: var(--accent-blue); font-weight: 600; }
+        .nav-links li.active-tab::after { width: 100%; }
 
         .main-wrapper {
             margin: 100px auto 0 auto;
@@ -115,16 +116,15 @@
             padding: 30px 5%; z-index: 10; position: relative;
         }
 
-        /* RETOUR A L'AFFICHAGE SANS EFFET DE RIDEAU OU BLOCAGE */
         .tab-content { display: none; width: 100%; margin: 0 auto; text-align: center; }
         .tab-content.active-content { display: block; }
-h2 {
-            font-size: 2rem; font-weight: 900; letter-spacing: 1.5px;
-            text-transform: uppercase; margin: 0 auto 10px auto; color: var(--text-main);
+        h2 {
+            font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px;
+            margin: 0 auto 10px auto; color: var(--text-main);
             text-align: center; width: 100%;
         }
 
-        .section-desc { font-size: 1rem; font-weight: 700; color: var(--text-muted); margin: 0 auto 30px auto; text-align: center; width: 100%; }
+        .section-desc { font-size: 1.05rem; font-weight: 400; color: #86868b; margin: 0 auto 35px auto; text-align: center; width: 100%; }
 
         /* RESTAURATION COMPLÈTE DE LA FLUIDITÉ DU CARROUSEL D'ORIGINE */
         .slider-wrapper {
@@ -144,20 +144,20 @@ h2 {
         }
 
         .slide-tag {
-            font-size: 0.8rem; font-weight: 900; text-transform: uppercase;
-            letter-spacing: 2px; color: var(--accent-blue); margin-bottom: 15px;
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 1.5px; color: var(--accent-blue); margin-bottom: 12px;
             display: inline-block;
         }
 
         .slide-item h3 {
-            font-size: 2.6rem; font-weight: 900; line-height: 1.2;
-            margin: 0 auto 20px auto; letter-spacing: -1px; color: var(--text-main);
+            font-size: 2.8rem; font-weight: 700; line-height: 1.15;
+            margin: 0 auto 20px auto; letter-spacing: -1.2px; color: var(--text-main);
             width: 100%; max-width: 800px; text-align: center;
         }
 
         .slide-item h3 span {
             background: var(--gradient-premium); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-size: 200% auto; animation: shineGradient 3s linear infinite;
+            background-size: 200% auto; animation: shineGradient 4s linear infinite;
         }
 
         @keyframes shineGradient {
@@ -167,133 +167,136 @@ h2 {
         }
 
         .slide-item p {
-            font-size: 1.15rem; color: var(--text-main); font-weight: 700; line-height: 1.7;
+            font-size: 1.2rem; color: #1d1d1f; font-weight: 400; line-height: 1.6;
             margin: 0 auto 15px auto; max-width: 740px; text-align: center;
         }
 
         .slide-features { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 30px; 
-            margin: 20px auto 0 auto; border-top: 2px solid var(--text-main); 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 35px; 
+            margin: 25px auto 0 auto; border-top: 1px solid rgba(0, 0, 0, 0.1); 
             padding-top: 25px; width: 100%; max-width: 750px;
         }
 
         .feat-box { background: transparent; padding: 0; border: none; text-align: center; }
-        .feat-box h4 { font-size: 1.25rem; font-weight: 900; color: var(--text-main); margin-bottom: 8px; }
-        .feat-box p { font-size: 1rem; color: var(--text-muted); margin: 0 auto; line-height: 1.6; font-weight: 600; }
+        .feat-box h4 { font-size: 1.3rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px; letter-spacing: -0.3px; }
+        .feat-box p { font-size: 1rem; color: #86868b; margin: 0 auto; line-height: 1.5; font-weight: 400; }
 
         .slider-controls { display: flex; justify-content: center; align-items: center; padding: 15px 0; width: 100%; }
-        .slider-dots { display: flex; gap: 12px; margin: 0 auto; }
+        .slider-dots { display: flex; gap: 8px; margin: 0 auto; }
         .dot {
-            width: 10px; height: 10px; border-radius: 50%; background: #000000; opacity: 0.3;
+            width: 8px; height: 8px; border-radius: 50%; background: #000000; opacity: 0.15;
             cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .dot.active-dot { background: var(--accent-blue); opacity: 1; width: 26px; border-radius: 5px; }
-/* RESTAURATION DU BOUTON PREMIUM EMBLÉMATIQUE */
+        .dot.active-dot { background: var(--accent-blue); opacity: 1; width: 20px; border-radius: 4px; }
+        /* EFFETS PREMIUM STYLE APPLE POUR LES BOUTONS ACCORDÉS */
         .btn-action {
-            background: var(--gradient-premium); color: #ffffff;
-            padding: 14px 32px; border-radius: 35px; font-weight: 800;
-            font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;
-            border: 2px solid #000000; cursor: pointer; transition: all 0.25s ease; display: inline-block;
-            box-shadow: 4px 4px 0px #000000;
+            background: var(--accent-blue); color: #ffffff;
+            padding: 12px 26px; border-radius: 22px; font-weight: 500;
+            font-size: 0.88rem; letter-spacing: -0.1px; text-transform: none;
+            border: none; cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); display: inline-block;
+            box-shadow: none;
         }
-        .btn-action:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0px #000000; }
+        .btn-action:hover { background: #0033cc; transform: scale(1.02); }
         
-        .nav-btn { padding: 10px 20px; font-size: 0.8rem; }
+        .nav-btn { padding: 8px 18px; font-size: 0.85rem; border-radius: 18px; }
 
-        /* BOUTON MOBILE GLISSANT UNIQUE ET ULTRA-PRO */
+        /* BOUTON MOBILE GLISSANT UNIQUE STYLE PREMIUM */
         .mobile-sticky-action {
-            display: none; position: fixed; bottom: 15px; left: 5%; width: 90%;
+            display: none; position: fixed; bottom: 20px; left: 5%; width: 90%;
             z-index: 999; text-align: center;
         }
-        .mobile-sticky-action .btn-action { width: 100%; box-shadow: 0px 8px 24px rgba(0, 68, 255, 0.4); border-radius: 16px; padding: 16px; font-size: 0.9rem; }
+        .mobile-sticky-action .btn-action { 
+            width: 100%; box-shadow: 0 12px 30px rgba(0, 68, 255, 0.3); 
+            border-radius: 14px; padding: 16px; font-size: 0.95rem; font-weight: 600;
+        }
 
-        .inline-section-title { font-size: 1.4rem; font-weight: 900; text-transform: uppercase; margin: 40px auto 20px auto; border-top: 2px solid #000000; padding-top: 30px; letter-spacing: 1px; }
+        .inline-section-title { font-size: 1.5rem; font-weight: 700; margin: 40px auto 25px auto; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 30px; letter-spacing: -0.5px; }
 
-        /* GRILLES FLUIDES SANS ENCADRÉS SOMBRE OU BLOCS PÂLES */
+        /* GRILLES FLUIDES SANS BORDUUURES RIGIDES */
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 30px; width: 100%; margin: 0 auto; }
         .card-link { text-decoration: none; color: inherit; position: relative; }
         
         .card {
-            background: #ffffff; border-radius: 22px;
-            overflow: hidden; border: 2px solid var(--text-main);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); height: 100%; display: flex; flex-direction: column;
-            box-shadow: 5px 5px 0px #000000; text-align: left;
+            background: #ffffff; border-radius: 20px;
+            overflow: hidden; border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); height: 100%; display: flex; flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); text-align: left;
         }
-        .card-img-container { width: 100%; height: 190px; background: #f0f0f3; overflow: hidden; position: relative; border-bottom: 2px solid #000000; }
-        .card-visual { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .card-img-container { width: 100%; height: 200px; background: #f5f5f7; overflow: hidden; position: relative; }
+        .card-visual { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         
         .card:hover { 
-            transform: translate(-3px, -3px); 
-            border-color: var(--accent-blue); 
-            box-shadow: 10px 10px 0px var(--accent-blue); 
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.09);
         }
-        .card:hover .card-visual { transform: scale(1.04); }
+        .card:hover .card-visual { transform: scale(1.03); }
         
         .card-info { padding: 24px; flex-grow: 1; }
-        .card h3 { font-size: 1.35rem; font-weight: 900; margin-bottom: 10px; color: var(--text-main); }
-        .card p { color: var(--text-muted); font-size: 0.98rem; font-weight: 700; line-height: 1.6; }
+        .card h3 { font-size: 1.35rem; font-weight: 600; margin-bottom: 8px; color: var(--text-main); letter-spacing: -0.3px; }
+        .card p { color: #86868b; font-size: 0.98rem; font-weight: 400; line-height: 1.5; }
 
         .btn-delete {
             display: none; position: absolute; top: 12px; right: 12px;
-            background: #ff3b30; color: white; border: 2px solid #000000; padding: 6px 12px;
-            border-radius: 8px; font-size: 0.75rem; font-weight: 800; cursor: pointer; z-index: 120;
+            background: rgba(255, 59, 48, 0.9); color: white; border: none; padding: 6px 14px;
+            border-radius: 12px; font-size: 0.75rem; font-weight: 600; backdrop-filter: blur(5px); cursor: pointer; z-index: 120;
+            transition: background 0.2s;
         }
+        .btn-delete:hover { background: rgba(255, 59, 48, 1); }
 
-        /* AFFICHAGE INSTANTANÉ DES PARTENAIRES SANS ZONE VIDE PARASITE */
+        /* CONFIGURATION DES LOGOS PARTENAIRES */
         .partners-container { 
             display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: center; 
             width: 100%; max-width: 1000px; margin: 0 auto;
         }
         .partner-item-wrapper { position: relative; display: inline-block; }
         .partner-link {
-            background: #ffffff; border: 2px solid var(--text-main);
+            background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.06);
             border-radius: 16px; padding: 20px 35px; display: flex; align-items: center; justify-content: center;
-            transition: all 0.25s ease; text-decoration: none; box-shadow: 4px 4px 0px #000000;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.02);
         }
-        .partner-logo { max-height: 40px; max-width: 125px; object-fit: contain; filter: grayscale(1) contrast(1.8); opacity: 1; transition: all 0.3s; }
-        .partner-link:hover { border-color: var(--accent-blue); transform: translate(-2px, -2px); box-shadow: 8px 8px 0px var(--accent-blue); }
-        .partner-link:hover .partner-logo { filter: grayscale(0) contrast(1); }
+        .partner-logo { max-height: 38px; max-width: 120px; object-fit: contain; filter: grayscale(1); opacity: 0.5; transition: all 0.3s; }
+        .partner-link:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06); border-color: rgba(0,0,0,0.1); }
+        .partner-link:hover .partner-logo { filter: grayscale(0); opacity: 1; }
 
-        /* MODALS */
+        /* MODALS DESIGN MINIMALISTE */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px;
         }
         .modal-box {
-            background: #ffffff; border: 3px solid var(--text-main);
-            border-radius: 24px; padding: 35px; width: 100%; max-width: 480px; position: relative;
-            box-shadow: 12px 12px 0px #000000;
-            transform: scale(0.95) translateY(10px);
-            transition: all 0.3s ease; text-align: left;
+            background: #ffffff; border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 28px; padding: 35px; width: 100%; max-width: 460px; position: relative;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+            transform: scale(0.95); opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-align: left;
         }
-        .modal-overlay.modal-open .modal-box { transform: scale(1) translateY(0); }
-        .close-modal { position: absolute; top: 20px; right: 20px; color: #000000; cursor: pointer; font-size: 1.7rem; font-weight: 900; }
+        .modal-overlay.modal-open .modal-box { transform: scale(1); opacity: 1; }
+        .close-modal { position: absolute; top: 22px; right: 24px; color: #86868b; cursor: pointer; font-size: 1.5rem; font-weight: 300; transition: color 0.2s; }
+        .close-modal:hover { color: #000000; }
         
         .form-select, .form-input {
-            width: 100%; padding: 15px; background: #ffffff; border: 2px solid #000000;
-            color: var(--text-main); border-radius: 12px; margin-bottom: 16px; font-size: 0.95rem; outline: none; font-weight: 700;
+            width: 100%; padding: 14px; background: #f5f5f7; border: none;
+            color: var(--text-main); border-radius: 12px; margin-bottom: 14px; font-size: 0.95rem; outline: none; font-weight: 400;
         }
-        .form-input-file { width: 100%; padding: 12px; background: transparent; color: var(--text-main); border-radius: 12px; margin-bottom: 16px; font-size: 0.85rem; border: 2px dashed #000000; font-weight: 700; }
-        .btn-submit-form { width: 100%; padding: 15px; background: var(--accent-blue); color: #ffffff; border: 2px solid #000000; border-radius: 12px; font-weight: 800; font-size: 0.95rem; cursor: pointer; text-transform: uppercase; transition: all 0.2s; box-shadow: 3px 3px 0px #000000; }
+        .form-input-file { width: 100%; padding: 12px; background: transparent; color: var(--text-main); border-radius: 12px; margin-bottom: 14px; font-size: 0.85rem; border: 1px dashed rgba(0,0,0,0.2); font-weight: 400; }
         
-        footer { text-align: center; padding: 40px 20px; border-top: 2px solid var(--text-main); margin: auto auto 0 auto; z-index: 10; position: relative; width: 100%; background: #ffffff; }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--border-color); margin: auto auto 0 auto; z-index: 10; position: relative; width: 100%; background: #ffffff; }
         .footer-logo-box { margin-bottom: 12px; display: inline-block; cursor: pointer; }
-        footer p { color: var(--text-main); font-size: 0.9rem; letter-spacing: 0.5px; font-weight: 800; }
+        footer p { color: #86868b; font-size: 0.88rem; font-weight: 400; }
 
         @media (max-width: 900px) {
             .nav-btn-desktop { display: none; }
             .mobile-sticky-action { display: block; }
         }
         @media (max-width: 768px) { 
-            nav { padding: 12px 4%; border-bottom-width: 2px; } 
-            .logo-text { font-size: 11px; font-weight: 900; }
-            .nav-links { gap: 12px; } 
-            .nav-links li { font-size: 0.8rem; font-weight: 800; }
+            nav { padding: 12px 4%; } 
+            .logo-text { font-size: 12px; }
+            .nav-links { gap: 16px; } 
+            .nav-links li { font-size: 0.85rem; }
             .main-wrapper { padding: 20px 4%; margin-top: 90px; } 
-            .slide-item { padding: 15px 5px; } .slide-item h3 { font-size: 1.85rem; } 
+            .slide-item { padding: 15px 5px; } .slide-item h3 { font-size: 2rem; } 
             .slide-features { grid-template-columns: 1fr; gap: 20px; }
-            .slider-controls { padding: 5px; }
         }
         @media (max-width: 480px) {
             .logo-text { display: none; }
@@ -308,7 +311,7 @@ h2 {
         <div class="slide-bg-img"></div>
         <div class="bg-slideshow-overlay"></div>
     </div>
-<nav>
+    <nav>
         <div class="logo-nav-container">
             <div class="space-scene-nav" style="position: relative; width: 45px; height: 35px; transform: scale(0.65); flex-shrink:0;">
                 <div class="ring-back" style="position: absolute; width: 40px; height: 10px; border: 2.5px solid #0055ff; border-radius: 50%; top: 12px; left: 2px; transform: rotate(-25deg); z-index: 1; clip-path: inset(0 0 50% 0); opacity: 0.4;"></div>
@@ -356,12 +359,12 @@ h2 {
                                 <div class="feat-box">
                                     <h4>Advice Basinsa</h4>
                                     <p>Leadership Stratégique & Vision technologique pragmatique.</p>
-                                    <p style="font-size:0.85rem; margin-top:5px; color:var(--accent-blue); font-weight:900;">Co-fondateur</p>
+                                    <p style="font-size:0.85rem; margin-top:5px; color:var(--accent-blue); font-weight:600;">Co-fondateur</p>
                                 </div>
                                 <div class="feat-box">
                                     <h4>Henock Aduma</h4>
                                     <p>Ingénierie d'Innovation & Passion pour le développement utile.</p>
-                                    <p style="font-size:0.85rem; margin-top:5px; color:var(--accent-blue); font-weight:900;">Co-fondateur</p>
+                                    <p style="font-size:0.85rem; margin-top:5px; color:var(--accent-blue); font-weight:600;">Co-fondateur</p>
                                 </div>
                             </div>
                         </div>
@@ -416,44 +419,47 @@ h2 {
             <div class="partners-container" id="dedicated-partners-list"></div>
         </div>
     </div>
-<div class="modal-overlay" id="contactModal">
+    <div class="modal-overlay" id="contactModal">
         <div class="modal-box">
             <span class="close-modal" onclick="closeModal('contactModal')">&times;</span>
-            <h3 style="margin-bottom:15px;">Quel est votre projet ?</h3>
+            <h3 style="font-size: 1.5rem; font-weight:600; margin-bottom:20px; letter-spacing:-0.4px;">Quel est votre projet ?</h3>
             <select id="projectType" class="form-select">
                 <option value="un Site Web moderne">Site Web Moderne</option>
                 <option value="une Application Mobile">Application Mobile</option>
                 <option value="une Solution sur mesure / un Logiciel">Solution sur mesure / Logiciel</option>
             </select>
-            <button class="btn-submit-form" onclick="generateAndSend()">Continuer sur Instagram</button>
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">
+                <button class="btn-submit-form" style="background: #000000; color: white; border-radius: 14px; border:none; padding:14px; font-weight:500; font-size:0.95rem; cursor:pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1" onclick="generateAndSend('instagram')">Continuer sur Instagram</button>
+                <button class="btn-submit-form" style="background: #34C759; color: white; border-radius: 14px; border:none; padding:14px; font-weight:500; font-size:0.95rem; cursor:pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1" onclick="generateAndSend('whatsapp')">Continuer sur WhatsApp</button>
+            </div>
         </div>
     </div>
 
     <div class="modal-overlay" id="adminModal">
         <div class="modal-box" style="max-width:550px;">
             <span class="close-modal" onclick="closeModal('adminModal')">&times;</span>
-            <h3 style="margin-bottom:5px;">Panneau d'administration ALT</h3>
-            <p class="section-desc" style="margin-bottom:20px;">Ajoutez du contenu sur la base Firebase en temps réel.</p>
+            <h3 style="font-weight:600; margin-bottom:5px;">Panneau d'administration ALT</h3>
+            <p class="section-desc" style="margin-bottom:20px; text-align:left;">Ajoutez du contenu sur la base Firebase en temps réel.</p>
             
             <select id="adminActionType" class="form-select" onchange="toggleAdminFields()">
                 <option value="projet">Ajouter un Projet</option>
                 <option value="partenaire">Ajouter un Partenaire</option>
             </select>
 
-            <div id="form-projet-block" class="admin-flex">
+            <div id="form-projet-block" style="display:flex; flex-direction:column;">
                 <input type="text" id="p-titre" class="form-input" placeholder="Titre du projet">
                 <input type="text" id="p-desc" class="form-input" placeholder="Description concise">
                 <input type="file" id="p-img-file" class="form-input-file" accept="image/*">
                 <input type="text" id="p-lien" class="form-input" placeholder="Lien final (https://...)">
             </div>
 
-            <div id="form-partenaire-block" class="admin-flex" style="display:none;">
+            <div id="form-partenaire-block" style="display:none; flex-direction:column;">
                 <input type="text" id="part-nom" class="form-input" placeholder="Nom de la structure">
                 <input type="file" id="part-logo-file" class="form-input-file" accept="image/*">
                 <input type="text" id="part-lien" class="form-input" placeholder="Lien du site partenaire (ou #)">
             </div>
 
-            <button class="btn-submit-form" style="margin-top:20px; background:#0044ff; color:white;" onclick="submitAdminData()">Publier sur Firebase</button>
+            <button class="btn-submit-form" style="margin-top:20px; background:#0044ff; color:white; border:none; border-radius:14px; padding:14px; font-weight:500;" onclick="submitAdminData()">Publier sur Firebase</button>
         </div>
     </div>
 
@@ -516,7 +522,6 @@ h2 {
             if (Math.abs(deltaX) > 40) { if (deltaX < 0) moveSlide(1); else moveSlide(-1); }
         }
 
-        /* SUPPRESSION RADICALE DU RETARD ET DE L'OPACITÉ AU CHANGEMENT D'ONGLET */
         function switchTab(event, tabId) {
             document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
             document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active-tab'));
@@ -527,8 +532,8 @@ h2 {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function openModal(id) { const m = document.getElementById(id); m.style.display = 'flex'; m.classList.add('modal-open'); }
-        function closeModal(id) { const m = document.getElementById(id); m.classList.remove('modal-open'); m.style.display = 'none'; }
+        function openModal(id) { const m = document.getElementById(id); m.style.display = 'flex'; setTimeout(() => m.classList.add('modal-open'), 10); }
+        function closeModal(id) { const m = document.getElementById(id); m.classList.remove('modal-open'); setTimeout(() => m.style.display = 'none', 300); }
 
         function checkAdminAccess() {
             if(prompt("Entrez le code secret d'AXION LABS :") === SECRET_ADMIN_CODE) { 
@@ -543,7 +548,17 @@ h2 {
             document.getElementById('form-partenaire-block').style.display = type === 'partenaire' ? 'flex' : 'none';
         }
 
-        function generateAndSend() { closeModal('contactModal'); window.open(`https://www.instagram.com/axion_labs_technologies`, '_blank'); }
+        function generateAndSend(platform) {
+            closeModal('contactModal');
+            const project = document.getElementById('projectType').value;
+            const message = encodeURIComponent(`Bonjour AXION LABS Technologies, je souhaite lancer un projet avec vous pour ${project}.`);
+            
+            if (platform === 'whatsapp') {
+                window.open(`https://wa.me/243845072349?text=${message}`, '_blank');
+            } else {
+                window.open(`https://www.instagram.com/axion_labs_technologies`, '_blank');
+            }
+        }
 
         async function submitAdminData() {
             const type = document.getElementById('adminActionType').value;
